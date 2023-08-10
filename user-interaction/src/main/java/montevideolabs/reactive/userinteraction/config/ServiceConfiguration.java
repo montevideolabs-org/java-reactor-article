@@ -47,7 +47,6 @@ public class ServiceConfiguration {
         return List.of(contactUsLinkHover, contactUsLinkClick, registerButtonClick);
     }
 
-    @Autowired
     @Bean
     public UserInteractionRepository userInteractionRepository(){
         return new UserInteractionRepositoryImpl();
