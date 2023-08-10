@@ -1,6 +1,7 @@
 package montevideolabs.reactive.userinteraction;
 
 import montevideolabs.reactive.userinteraction.config.ServiceConfiguration;
+import montevideolabs.reactive.userinteraction.models.UserInteraction;
 import montevideolabs.reactive.userinteraction.service.interfaces.UserInteractionService;
 import montevideolabs.reactive.userinteraction.service.implementation.UserInteractionServiceImpl;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +17,8 @@ public class UserInteractionApplication {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(ServiceConfiguration.class);
 		UserInteractionService userInteractionService = ctx.getBean(UserInteractionService.class);
 		userInteractionService.filterByDomElementType("button")
-			.subscribe(ui -> System.out.println(ui.toString()));
+				.map(UserInteraction::toString)
+				.subscribe(System.out::println);
 	}
 
 }
