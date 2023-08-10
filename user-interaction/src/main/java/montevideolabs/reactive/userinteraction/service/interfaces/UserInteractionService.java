@@ -1,4 +1,4 @@
-package montevideolabs.reactive.userinteraction.service;
+package montevideolabs.reactive.userinteraction.service.interfaces;
 
 import montevideolabs.reactive.userinteraction.models.UserInteraction;
 import reactor.core.publisher.Flux;
