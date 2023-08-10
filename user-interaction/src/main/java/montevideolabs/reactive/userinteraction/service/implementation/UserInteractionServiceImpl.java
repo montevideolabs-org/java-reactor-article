@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class UserInteractionServiceImpl implements UserInteractionService {
+
     @Autowired
     private UserInteractionRepository userInteractionRepository;
 
@@ -25,7 +26,7 @@ public class UserInteractionServiceImpl implements UserInteractionService {
     @Override
     public Mono<UserInteraction> getUserMostRecentInteraction(UUID userUUID) {
         Flux<UserInteraction> userInteractions = userInteractionRepository.getAllUserInteractions();
-        userInteractions.subscribe(ui -> System.out.println(ui.toString()));
+        userInteractions.subscribe(System.out::println);
         return userInteractions
                 .filter(ui -> ui.getUserId().equals(userUUID))
                 .reduce((ui1, ui2) -> ui1.getUnixTimestamp() > ui2.getUnixTimestamp() ? ui1 : ui2);
